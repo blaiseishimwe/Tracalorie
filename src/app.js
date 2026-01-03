@@ -21,10 +21,14 @@ class App {
     document
       .getElementById('workout-form')
       .addEventListener('submit', this._newItem.bind(this, 'workout'));
-    //Display Macros event
+    // Display Macros event
     document
       .getElementById('meal-items')
-      .addEventListener('click', this._displayMacro.bind(this)); // Display Macro
+      .addEventListener('click', this._displayMacro.bind(this));
+    // Convert Macros to cal event///////
+    document
+      .getElementById('macros')
+      .addEventListener('click', this._convertMacros.bind(this));
     document
       .getElementById('meal-items')
       .addEventListener('click', this._removeItem.bind(this, 'meal')); //event delegation
@@ -105,6 +109,31 @@ class App {
       console.log(id);
     }
     //alert(e.target.classList);
+  }
+  // _convertMacros() handler
+  _convertMacros(e) {
+    if (e.target.id === 'fats-consumed') {
+      const fats = +e.target.innerHTML;
+      alert(
+        `Fats are the most energy-dense macronutrient, providing more than twice the energy of protein or carbs but not all fats are equal; health experts recommend focusing on unsaturated (healthy) fats while limiting saturated and trans fats for better heart health. ${fats} grams of fats provide ${
+          fats * 9
+        } calories.`
+      );
+    } else if (e.target.id === 'carbs-consumed') {
+      const carbs = +e.target.innerHTML;
+      alert(
+        `Carbohydrates provide 4 calories per gram, a standard conversion used in nutrition labeling, meaning to find calories from carbs, you multiply the grams of carbs by four. ${carbs} grams of carbs provide ${
+          carbs * 4
+        } calories.`
+      );
+    } else if (e.target.id === 'proteins-consumed') {
+      const proteins = +e.target.innerHTML;
+      alert(
+        `Protein provides 4 calories per gram, the same as carbohydrates. Protein is crucial for growth, muscle repair, and energy. Your body burns more calories digesting protein (Thermic Effect of Food) than carbs or fat, making it beneficial for weight management. To find calories from proteins, you multiply the grams of proteins by four. ${proteins} grams of proteins provide ${
+          proteins * 4
+        } calories.`
+      );
+    }
   }
   // _removeItem() handler
   _removeItem(type, e) {

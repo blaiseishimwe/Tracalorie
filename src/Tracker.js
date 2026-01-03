@@ -124,7 +124,6 @@ class CalorieTracker {
   _displayCaloriesTotal() {
     const totalCaloriesEl = document.getElementById('calories-total');
     totalCaloriesEl.innerHTML = this._totalCalories;
-    console.log('calories total');
   }
 
   _displayCaloriesLimit() {
@@ -185,7 +184,7 @@ class CalorieTracker {
   _displayFatsConsumed() {
     const fatsConsumedEl = document.getElementById('fats-consumed');
     fatsConsumedEl.innerHTML = this._totalFats;
-    if (this._totalFats > 44 && this._totalFats < 78) {
+    if (this._totalFats > 44 && this._totalFats < 60) {
       fatsConsumedEl.parentElement.parentElement.classList.remove(
         'bg-danger',
         'bg-warning'
@@ -209,7 +208,7 @@ class CalorieTracker {
   _displayCarbsConsumed() {
     const carbsConsumedEl = document.getElementById('carbs-consumed');
     carbsConsumedEl.innerHTML = this._totalCarbs;
-    if (this._totalCarbs > 225 && this._totalCarbs < 235) {
+    if (this._totalCarbs > 225 && this._totalCarbs < 260) {
       carbsConsumedEl.parentElement.parentElement.classList.remove(
         'bg-danger',
         'bg-warning'
@@ -233,13 +232,13 @@ class CalorieTracker {
   _displayProteinsConsumed() {
     const proteinsConsumedEl = document.getElementById('proteins-consumed');
     proteinsConsumedEl.innerHTML = this._totalProteins;
-    if (this._totalProteins > 50 && this._totalProteins < 175) {
+    if (this._totalProteins > 60 && this._totalProteins < 175) {
       proteinsConsumedEl.parentElement.parentElement.classList.remove(
         'bg-danger',
         'bg-warning'
       );
       proteinsConsumedEl.parentElement.parentElement.classList.add('bg-light');
-    } else if (this._totalProteins >= 0 && this._totalProteins <= 50) {
+    } else if (this._totalProteins >= 0 && this._totalProteins <= 60) {
       proteinsConsumedEl.parentElement.parentElement.classList.remove(
         'bg-light',
         'bg-warning'
@@ -259,7 +258,7 @@ class CalorieTracker {
   _displayCaloriesProgress() {
     const progressEL = document.getElementById('calorie-progress');
     const widthPercentage = (this._totalCalories * 100) / this._calorieLimit;
-    console.log(widthPercentage);
+
     const width = Math.min(widthPercentage, 100);
     progressEL.style.width = `${width}%`;
     if (widthPercentage > 100) {
